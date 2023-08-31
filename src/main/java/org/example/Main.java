@@ -5,9 +5,10 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 class Index implements HttpHandler {
     private final String input;
@@ -17,17 +18,19 @@ class Index implements HttpHandler {
     }
 
     @Override
-    public void handle(HttpExchange exchange) throws IOException
-    {
+    public void handle(HttpExchange exchange) throws IOException {
         System.out.println("Got " + input + " request");
         byte[] test = "test".getBytes();
-        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, test.length);
+        String file = Files.readString(Paths.get("src/main/html/index.html"));
+        byte[] fileBytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, fileBytes.length);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
-        exchange.getResponseBody().write(test);
+        exchange.getResponseBody().write(fileBytes);
         exchange.close();
         System.out.println("Closed");
     }
 }
+
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Hello world!");
