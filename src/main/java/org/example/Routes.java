@@ -32,7 +32,6 @@ class Index implements HttpHandler {
 }
 
 class Static implements HttpHandler {
-
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         URI req_uri = exchange.getRequestURI();
@@ -44,6 +43,34 @@ class Static implements HttpHandler {
         List<String> content_type = exchange.getRequestHeaders().get("Accept");
         System.out.println("MIME type: " + content_type.get(0));
         exchange.getResponseHeaders().add("Content-Type", content_type.get(0));
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+        System.out.println("Closed");
+    }
+}
+
+class First implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /first request");
+        String file = Files.readString(Paths.get("src/main/html/first.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+        System.out.println("Closed");
+    }
+}
+
+class Second implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /second request");
+        String file = Files.readString(Paths.get("src/main/html/second.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.getResponseBody().write(file_bytes);
         exchange.close();
         System.out.println("Closed");

@@ -13,6 +13,8 @@ public class Main {
         server.createContext("/", new Index("/"));
         server.createContext("/test", new Index("/test"));
         server.createContext("/static", new Static());
+        server.createContext("/first", new First());
+        server.createContext("/second", new Second());
         server.start();
     }
 }
