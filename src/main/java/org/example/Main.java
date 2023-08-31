@@ -19,8 +19,7 @@ class Index implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("Got " + input + " request");
-        byte[] test = "test".getBytes();
+        System.out.println("got " + input + " request");
         String file = Files.readString(Paths.get("src/main/html/index.html"));
         byte[] fileBytes = file.getBytes();
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, fileBytes.length);
