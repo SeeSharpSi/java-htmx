@@ -11,7 +11,8 @@ public class Main {
         System.out.println("Server hosted on port " + port);
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/", new Index("/"));
-        server.createContext("/test", new Index("test"));
+        server.createContext("/test", new Index("/test"));
+        server.createContext("/static", new Static());
         server.start();
     }
 }
