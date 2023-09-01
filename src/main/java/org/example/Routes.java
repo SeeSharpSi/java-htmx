@@ -51,32 +51,6 @@ class Static implements HttpHandler {
     }
 }
 
-class First implements HttpHandler {
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("got /first request");
-        String file = Files.readString(Paths.get("src/main/html/first.html"));
-        byte[] file_bytes = file.getBytes();
-        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
-        exchange.getResponseHeaders().add("Content-Type", "text/html");
-        exchange.getResponseBody().write(file_bytes);
-        exchange.close();
-    }
-}
-
-class Second implements HttpHandler {
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("got /second request");
-        String file = Files.readString(Paths.get("src/main/html/second.html"));
-        byte[] file_bytes = file.getBytes();
-        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
-        exchange.getResponseHeaders().add("Content-Type", "text/html");
-        exchange.getResponseBody().write(file_bytes);
-        exchange.close();
-    }
-}
-
 class Form implements HttpHandler {
     public static Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
         Map<String, String> query_pairs = new LinkedHashMap<String, String>();
@@ -99,6 +73,32 @@ class Form implements HttpHandler {
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
         exchange.getResponseBody().write(bytes);
+        exchange.close();
+    }
+}
+
+class First implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /first request");
+        String file = Files.readString(Paths.get("src/main/html/first.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Second implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /second request");
+        String file = Files.readString(Paths.get("src/main/html/second.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
         exchange.close();
     }
 }
