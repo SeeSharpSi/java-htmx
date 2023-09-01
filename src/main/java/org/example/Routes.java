@@ -3,16 +3,10 @@ package org.example;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-//import sun.nio.ch.IOUtil;
-//import sun.nio.cs.StandardCharsets;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -20,7 +14,6 @@ import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 class Index implements HttpHandler {
     private final String input;
@@ -38,7 +31,6 @@ class Index implements HttpHandler {
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.getResponseBody().write(file_bytes);
         exchange.close();
-        System.out.println("Closed");
     }
 }
 
@@ -56,7 +48,6 @@ class Static implements HttpHandler {
         exchange.getResponseHeaders().add("Content-Type", content_type.get(0));
         exchange.getResponseBody().write(file_bytes);
         exchange.close();
-        System.out.println("Closed");
     }
 }
 
@@ -70,7 +61,6 @@ class First implements HttpHandler {
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.getResponseBody().write(file_bytes);
         exchange.close();
-        System.out.println("Closed");
     }
 }
 
@@ -84,7 +74,6 @@ class Second implements HttpHandler {
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.getResponseBody().write(file_bytes);
         exchange.close();
-        System.out.println("Closed");
     }
 }
 
@@ -103,12 +92,13 @@ class Form implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /form request");
-        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+        byte[] bytes = "<div>form submitted</div>".getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         byte[] query = exchange.getRequestBody().readAllBytes();
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
+        exchange.getResponseBody().write(bytes);
         exchange.close();
-        System.out.println("Closed");
     }
 }
