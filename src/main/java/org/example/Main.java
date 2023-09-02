@@ -25,7 +25,7 @@ public class Main {
 
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:/home/silas/projects/java/java-htmx/test.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30); // set timeout to 30 sec.
 
