@@ -14,6 +14,11 @@ import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 class Index implements HttpHandler {
     private final String input;
@@ -67,13 +72,38 @@ class Form implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /form request");
         byte[] bytes = "<div>form submitted</div>".getBytes();
-        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
-        exchange.getResponseHeaders().add("Content-Type", "text/html");
         byte[] query = exchange.getRequestBody().readAllBytes();
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
-        exchange.getResponseBody().write(bytes);
-        exchange.close();
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:test.db");
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(15);
+            statement.executeUpdate(String.format("insert into person values(null, '%s', '%s')", query_map.get("fname"),
+                    query_map.get("lname")));
+            ResultSet rs = statement.executeQuery("select * from person");
+            while (rs.next()) {
+                System.out.println("fname = " + rs.getString("fname"));
+                System.out.println("lname = " + rs.getString("lname"));
+                System.out.println("id = " + rs.getInt("id"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            bytes = "SQL Error".getBytes();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+                bytes = "SQL Error".getBytes();
+            }
+            exchange.getResponseHeaders().add("Content-Type", "text/html");
+            exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
+            exchange.getResponseBody().write(bytes);
+            exchange.close();
+        }
     }
 }
 
@@ -94,6 +124,7 @@ class Second implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /second request");
+
         String file = Files.readString(Paths.get("src/main/html/second.html"));
         byte[] file_bytes = file.getBytes();
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
