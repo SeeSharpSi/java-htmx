@@ -21,3 +21,8 @@ input {
 hr {
     width: 75vw;
 }
+
+button {
+    width: 100%;
+    color: black;
+}

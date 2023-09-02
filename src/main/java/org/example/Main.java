@@ -21,6 +21,7 @@ public class Main {
         server.createContext("/first", new First());
         server.createContext("/second", new Second());
         server.createContext("/form", new Form());
+        server.createContext("/form_html", new Form_Html());
         server.start();
 
         Connection connection = null;
@@ -30,16 +31,8 @@ public class Main {
             statement.setQueryTimeout(30); // set timeout to 30 sec.
 
             statement.executeUpdate("drop table if exists person");
-            statement.executeUpdate("create table person (id integer primary key autoincrement, fname string, lname string)");
-            statement.executeUpdate("insert into person values(null, 'leo', 'yang')");
-            statement.executeUpdate("insert into person values(null, 'yui', 'lew')");
-            ResultSet rs = statement.executeQuery("select * from person");
-            while (rs.next()) {
-                // read the result set
-                System.out.println("fname = " + rs.getString("fname"));
-                System.out.println("lname = " + rs.getString("lname"));
-                System.out.println("id = " + rs.getInt("id"));
-            }
+            statement.executeUpdate(
+                    "create table person (id integer primary key autoincrement, fname string, lname string)");
         } catch (SQLException e) {
             // if the error message is "out of memory",
             // it probably means no database file is found

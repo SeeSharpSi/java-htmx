@@ -71,7 +71,7 @@ class Form implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /form request");
-        byte[] bytes = "<div>form submitted</div>".getBytes();
+        byte[] bytes = "<div>form submitted</div> <button hx-get='/form_html' hx-target='#form' hx-swap='outerHTML'>New form</button>".getBytes();
         byte[] query = exchange.getRequestBody().readAllBytes();
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
@@ -104,6 +104,19 @@ class Form implements HttpHandler {
             exchange.getResponseBody().write(bytes);
             exchange.close();
         }
+    }
+}
+
+class Form_Html implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /form_html request");
+        String file = Files.readString(Paths.get("src/main/html/form_html.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
     }
 }
 
