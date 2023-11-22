@@ -1,16 +1,22 @@
 :root {
-  background-color: #191724; /* rosePine base */
+    background-color: #191724; /* rosePine base */
 }
+
 * {
-  color: #e0def4; /* rosePine text */
+    color: #e0def4; /* rosePine text */
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 
 #main {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10vh;
-  align-items: center;
-  user-select: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    align-items: center;
+    user-select: none;
 }
 
 input {
@@ -25,4 +31,29 @@ hr {
 button {
     width: 100%;
     color: black;
+}
+
+.topNav {
+    background-color: rgb(38, 35, 58);
+    font-size: 20px;
+    display: flex;
+    overflow: hidden;
+    margin-top: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.topNav div {
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.topNav div:hover {
+    background-color: #21202e;
+    color: #cbeff5;
+    /*
+    text-shadow:
+    0 0 2px #fff;
+    */
 }

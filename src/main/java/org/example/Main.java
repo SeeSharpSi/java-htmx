@@ -16,10 +16,12 @@ public class Main {
         System.out.println("By default, go to localhost:" + port + " in your browser");
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/", new Index("/"));
-        server.createContext("/test", new Index("/test"));
         server.createContext("/static", new Static());
-        server.createContext("/first", new First());
-        server.createContext("/second", new Second());
+        server.createContext("/home", new Home());
+        server.createContext("/order", new Order());
+        server.createContext("/other", new Other());
+        server.createContext("/rewards", new Rewards());
+        server.createContext("/cart", new Cart());
         server.createContext("/form", new Form());
         server.createContext("/form_html", new Form_Html());
         server.start();

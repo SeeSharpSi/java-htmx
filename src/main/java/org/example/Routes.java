@@ -39,6 +39,71 @@ class Index implements HttpHandler {
     }
 }
 
+class Home implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /home request");
+        String file = Files.readString(Paths.get("src/main/html/home.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Order implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /home request");
+        String file = Files.readString(Paths.get("src/main/html/order.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Other implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /home request");
+        String file = Files.readString(Paths.get("src/main/html/other.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Rewards implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /home request");
+        String file = Files.readString(Paths.get("src/main/html/rewards.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Cart implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /home request");
+        String file = Files.readString(Paths.get("src/main/html/cart.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
 class Static implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -112,33 +177,6 @@ class Form_Html implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /form_html request");
         String file = Files.readString(Paths.get("src/main/html/form_html.html"));
-        byte[] file_bytes = file.getBytes();
-        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
-        exchange.getResponseHeaders().add("Content-Type", "text/html");
-        exchange.getResponseBody().write(file_bytes);
-        exchange.close();
-    }
-}
-
-class First implements HttpHandler {
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("got /first request");
-        String file = Files.readString(Paths.get("src/main/html/first.html"));
-        byte[] file_bytes = file.getBytes();
-        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
-        exchange.getResponseHeaders().add("Content-Type", "text/html");
-        exchange.getResponseBody().write(file_bytes);
-        exchange.close();
-    }
-}
-
-class Second implements HttpHandler {
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("got /second request");
-
-        String file = Files.readString(Paths.get("src/main/html/second.html"));
         byte[] file_bytes = file.getBytes();
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
