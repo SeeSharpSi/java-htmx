@@ -14,7 +14,6 @@ body {
 #main {
     display: flex;
     flex-direction: column;
-    margin-top: 10vh;
     align-items: center;
     user-select: none;
 }
@@ -56,4 +55,41 @@ button {
     text-shadow:
     0 0 2px #fff;
     */
+}
+
+#home {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 4vh;
+    height: 50vh;
+    width: 90vw;
+    gap: 10px;
+}
+
+#home .dotd {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#home .deal {
+    grid-row: 1;
+    grid-column: 3;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#home .maps {
+    grid-row: 1;
+    grid-column: 4;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+#home .static_image {
+    grid-row: 2;
+    grid-column: span 2;
+    border: 2px solid white;
+    border-radius: 10px;
 }
