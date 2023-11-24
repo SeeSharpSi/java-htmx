@@ -9,6 +9,14 @@
 body {
     margin: 0;
     padding: 0;
+    height: 80vh;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 #main {
@@ -16,6 +24,8 @@ body {
     flex-direction: column;
     align-items: center;
     user-select: none;
+    height: 100%;
+    justify-content: center;
 }
 
 input {
@@ -61,10 +71,10 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    margin-bottom: 4vh;
-    height: 50vh;
+    height: 100%;
     width: 90vw;
     gap: 10px;
+    margin: 4vh;
 }
 
 #home .dotd {
@@ -72,6 +82,11 @@ button {
     grid-column: 1 / span 2;
     border: 2px solid white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
 }
 
 #home .deal {
@@ -79,6 +94,11 @@ button {
     grid-column: 3;
     border: 2px solid white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
 }
 
 #home .maps {
@@ -86,10 +106,21 @@ button {
     grid-column: 4;
     border: 2px solid white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
 }
+
 #home .static_image {
     grid-row: 2;
     grid-column: span 2;
     border: 2px solid white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
 }
