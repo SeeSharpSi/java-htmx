@@ -9,14 +9,23 @@
 body {
     margin: 0;
     padding: 0;
+    height: 80vh;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 #main {
     display: flex;
     flex-direction: column;
-    margin-top: 10vh;
     align-items: center;
     user-select: none;
+    height: 100%;
+    justify-content: center;
 }
 
 input {
@@ -56,4 +65,62 @@ button {
     text-shadow:
     0 0 2px #fff;
     */
+}
+
+#home {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    width: 90vw;
+    gap: 10px;
+    margin: 4vh;
+}
+
+#home .dotd {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#home .deal {
+    grid-row: 1;
+    grid-column: 3;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#home .maps {
+    grid-row: 1;
+    grid-column: 4;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#home .static_image {
+    grid-row: 2;
+    grid-column: span 2;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: xx-large;
 }

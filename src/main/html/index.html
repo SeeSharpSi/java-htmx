@@ -7,18 +7,17 @@
     <script type="text/javascript" src="static/htmx.min.js"></script>
 </head>
 <body>
+<div class="topNav">
+    <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/home">Home</div>
+    <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/order">Order</div>
+    <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/other">Other</div>
+    <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/rewards">Rewards</div>
+    <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/cart">Cart</div>
+</div>
 <div id="page">
-    <div class="topNav">
-        <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/home">Home</div>
-        <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/order">Order</div>
-        <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/other">Other</div>
-        <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/rewards">Rewards</div>
-        <div hx-target="#main" hx-swap="innerHTML" hx-boost="true" hx-get="/cart">Cart</div>
+    <div id="main">
+        <div hx-get="/form_html" hx-swap="outerHTML" hx-trigger="load"></div>
     </div>
-</div>
-</div>
-<div id="main">
-    <div hx-get="/form_html" hx-swap="outerHTML" hx-trigger="load"></div>
 </div>
 </body>
 </html>
