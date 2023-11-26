@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+//Class written by Joshua Green
 public class SQLController {
 
     private Connection connect() {
