@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class SQLController {
 
     private Connection connect() {
-        String url = "jdbc:sqlite:pizzaDatabase.db";
+        String url = "jdbc:sqlite:pizzaDatabase.sqlite";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
