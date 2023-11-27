@@ -141,6 +141,8 @@ class Form implements HttpHandler {
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
         Connection connection = null;
+        SQLController sqlController = new SQLController();
+        sqlController.addTopping(1, query_map.get("lname"), 0.50F);
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
             Statement statement = connection.createStatement();
