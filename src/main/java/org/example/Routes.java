@@ -186,3 +186,20 @@ class Form_Html implements HttpHandler {
         exchange.close();
     }
 }
+
+class Test implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /test request");
+        String[] stuff = {"test1", "test2", "test3"};
+        StringBuilder file = new StringBuilder();
+        for (String s : stuff) {
+            file.append(String.format("<div>Item: %s</div>", s));
+        }
+        byte[] file_bytes = file.toString().getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
