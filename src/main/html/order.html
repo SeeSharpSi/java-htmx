@@ -33,22 +33,23 @@
     </div>
 </section>
 <center>
-    <form id="pizza_order" hx-post="/test">
+    <form id="pizza_order" hx-post="/menu_submit">
         <nav class="menu">
             <div class="category">
                 <h2>Premade Pizzas</h2> <br>
                 <ul>
                     <li>
-                        <h3 class="dish-name">Hawian Pizza - $12.99 <br> <label for="spaghettiBologneseToppings">Crust
+                        <h3 class="dish-name">Hawian Pizza - $12.99 <br> <label for="hawaiian_piza">Crust
                             Type</label>
-                            <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
+                            <select id="hawaiian_piza" name="hawaiian_piza">
+                                <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
 
                             </select></h3>
 
-                        <br><span calss="Description">A premiume pizza with your choice of cheese and meat along with our famous pineapple</span><br>
+                        <br><span class="Description">A premiume pizza with your choice of cheese and meat along with our famous pineapple</span><br>
                         <img src="img/Hawian.jpg" alt="Hawian Pizza" width="200 px" height="200 px">
                         <br>
                         <br>
@@ -56,16 +57,17 @@
                     <!--Next Item-->
                     <li>
                         <br>
-                        <h3 class="dish-name">Supreme - $15.99 <br> <label for="spaghettiBologneseToppings">Crust
+                        <h3 class="dish-name">Supreme - $15.99 <br> <label for="supreme_pizza">Crust
                             Type</label>
-                            <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
+                            <select id="supreme_pizza" name="supreme_pizza">
+                                <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
 
                             </select></h3>
 
-                        <br><span calss="Description">A Supreme Pizza for all you heavy coders out there it has Sausage, Peppers, Pepperoni, Mushrooms, Green Peppers, and Onions!</span><br>
+                        <br><span class="Description">A Supreme Pizza for all you heavy coders out there it has Sausage, Peppers, Pepperoni, Mushrooms, Green Peppers, and Onions!</span><br>
                         <img src="img/Supreme.jpg" alt="Supreme" width="200 px" height="200 px">
 
                         <br>
@@ -73,16 +75,17 @@
                     <!-- Next Item-->
                     <li>
                         <br><br>
-                        <h3 class="dish-name">Ultimate Pepperoni - $14.99 <br> <label for="spaghettiBologneseToppings">Crust
+                        <h3 class="dish-name">Ultimate Pepperoni - $14.99 <br> <label for="ultimate_pepperoni">Crust
                             Type</label>
-                            <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
+                            <select id="ultimate_pepperoni" name="ultimate_pepperoni">
+                                <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
 
                             </select></h3>
 
-                        <br><span calss="Description">I heard you like pepperoni well with this you get double no TRIPLE the pepperoni!</span><br>
+                        <br><span class="Description">I heard you like pepperoni well with this you get double no TRIPLE the pepperoni!</span><br>
                         <img src="img/MuchPepperoni.jpg" alt="Supreme" width="200 px" height="200 px">
 
                         <br>
@@ -97,8 +100,8 @@
                 <h2>Build your own Pizza - $16.99</h2>
                 <ul>
                     <h3>Pick your 5 toppings</h3>
-                    <label for="spaghettiBologneseToppings">Topping 1</label>
-                    <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
+                    <label for="toppings_one">Topping 1</label>
+                    <select id="toppings_one" name="toppings_one">
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -117,8 +120,8 @@
                         <option value="Black Olives">Black Olives</option>
 
                     </select>
-                    <label for="spaghettiBologneseToppings">Topping 2</label>
-                    <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
+                    <label for="toppings_two">Topping 2</label>
+                    <select id="toppings_two" name="toppings_two">
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -137,29 +140,8 @@
                         <option value="Black Olives">Black Olives</option>
 
                     </select>
-                    <label for="spaghettiBologneseToppings">Topping 3</label>
-                    <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
-                        <option value="none">None</option>
-                        <option value="parmesan">Parmesan</option>
-                        <option value="mozzarella">mozzarella</option>
-                        <option value="marinara">marinara</option>
-                        <option value="Alfredo">Alfredo</option>
-                        <option value="BBQ">BBQ</option>
-                        <option value="Pepperoni">Pepperoni</option>
-                        <option value="Bacon">Bacon</option>
-                        <option value="Sausage">Sausage</option>
-                        <option value="Beef">Beef</option>
-                        <option value="Chicken">Chicken</option>
-                        <option value="Ham">Ham</option>
-                        <option value="Mushrooms">Mushrooms</option>
-                        <option value="Peppers">Peppers</option>
-                        <option value="Onions">Onions</option>
-                        <option value="Black Olives">Black Olives</option>
-
-                    </select>
-
-                    <label for="spaghettiBologneseToppings">Topping 4</label>
-                    <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
+                    <label for="toppings_three">Topping 3</label>
+                    <select id="toppings_three" name="toppings_three">
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -179,8 +161,29 @@
 
                     </select>
 
-                    <label for="spaghettiBologneseToppings">Topping 5</label>
-                    <select id="spaghettiBologneseToppings" name="spaghettiBologneseToppings">
+                    <label for="toppings_four">Topping 4</label>
+                    <select id="toppings_four" name="toppings_four">
+                        <option value="none">None</option>
+                        <option value="parmesan">Parmesan</option>
+                        <option value="mozzarella">mozzarella</option>
+                        <option value="marinara">marinara</option>
+                        <option value="Alfredo">Alfredo</option>
+                        <option value="BBQ">BBQ</option>
+                        <option value="Pepperoni">Pepperoni</option>
+                        <option value="Bacon">Bacon</option>
+                        <option value="Sausage">Sausage</option>
+                        <option value="Beef">Beef</option>
+                        <option value="Chicken">Chicken</option>
+                        <option value="Ham">Ham</option>
+                        <option value="Mushrooms">Mushrooms</option>
+                        <option value="Peppers">Peppers</option>
+                        <option value="Onions">Onions</option>
+                        <option value="Black Olives">Black Olives</option>
+
+                    </select>
+
+                    <label for="toppings_five">Topping 5</label>
+                    <select id="toppings_five" name="toppings_five">
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -204,6 +207,7 @@
                     <h3>Pick your crust type</h3>
                     <label for="CrustType">Crust Type</label>
                     <select id="CrustType" name="CrustType">
+                        <option value="" selected disabled hidden>Choose here</option>
                         <option value="Thin Crust">Thin Crust</option>
                         <option value="Thick Crust">Thick Crust</option>
                         <option value="Stuffed Crust">Stuffed Crust</option>
