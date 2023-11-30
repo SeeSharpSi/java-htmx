@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URI;
@@ -183,6 +184,52 @@ class Form_Html implements HttpHandler {
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Test implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /test request");
+        String[] stuff = {"test1", "test2", "bob"};
+        StringBuilder file = new StringBuilder();
+        for (String s : stuff) {
+            file.append(String.format("<div>Item: %s</div>", s));
+        }
+        byte[] file_bytes = file.toString().getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Menu_Submit implements HttpHandler {
+    public static Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
+        Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+        String[] pairs = query.split("&");
+        for (String pair : pairs) {
+            int idx = pair.indexOf("=");
+            query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"),
+                    URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
+        }
+        return query_pairs;
+    }
+
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /menu_submit request");
+        byte[] bytes = "<div>form submitted</div> <button hx-get='/form_html' hx-target='#form' hx-swap='outerHTML'>New form</button>".getBytes();
+        byte[] query = exchange.getRequestBody().readAllBytes();
+        Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
+        System.out.println(query_map);
+        Connection connection = null;
+        SQLController sqlController = new SQLController();
+        sqlController.addTopping(1, query_map.get("lname"), 0.50F);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
+        exchange.getResponseBody().write(bytes);
         exchange.close();
     }
 }
