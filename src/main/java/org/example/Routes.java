@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URI;
@@ -180,6 +181,23 @@ class Form_Html implements HttpHandler {
         System.out.println("got /form_html request");
         String file = Files.readString(Paths.get("src/main/html/form_html.html"));
         byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Test implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /test request");
+        String[] stuff = {"test1", "test2", "bob"};
+        StringBuilder file = new StringBuilder();
+        for (String s : stuff) {
+            file.append(String.format("<div>Item: %s</div>", s));
+        }
+        byte[] file_bytes = file.toString().getBytes();
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.getResponseBody().write(file_bytes);
