@@ -381,4 +381,409 @@ public class SQLController {
             }
         }
     }
+
+    public void addPizzaCrust(int id, String name, float price) {
+        String pizzaCrust = "INSERT INTO pizzaCrust(id, name, price) VALUES(?, ?, ?)";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(pizzaCrust, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.setString(2, name);
+            ptsmt.setFloat(3, price);
+
+            ptsmt.executeUpdate();
+
+            conn.commit();
+
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+
+    }
+
+    public void deletePizzaCrust (int id) {
+        String deleteCrust = "DELETE FROM pizzaCrust where id = ?";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(deleteCrust, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.executeUpdate();
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+    }
+
+
+    public void addPizzaMenuItem(int id, String name, float price) {
+        String pizzaMenuItem = "INSERT INTO pizzaMenuItem(id, name, price) VALUES(?, ?, ?)";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(pizzaMenuItem, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.setString(2, name);
+            ptsmt.setFloat(3, price);
+
+            ptsmt.executeUpdate();
+
+            conn.commit();
+
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+
+    }
+
+    public void deletePizzaMenuItem (int id) {
+        String deletePizzaMenuItem = "DELETE FROM pizzaMenuItem where id = ?";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(deletePizzaMenuItem, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.executeUpdate();
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+    }
+
+    public void addPizzaSize(int id, String name, float price) {
+        String pizzaSize = "INSERT INTO pizzSize(id, name, price) VALUES(?, ?, ?)";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(pizzaSize, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.setString(2, name);
+            ptsmt.setFloat(3, price);
+
+            ptsmt.executeUpdate();
+
+            conn.commit();
+
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+
+    }
+
+    public void deletePizzaSize (int id) {
+        String deletePizzaSize = "DELETE FROM pizzaSize where id = ?";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(deletePizzaSize, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.executeUpdate();
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+    }
+
+    public void addSide(int id, String name, float price) {
+        String side = "INSERT IN side(id, name, price) VALUES(?, ?, ?)";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(side, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.setString(2, name);
+            ptsmt.setFloat(3, price);
+
+            ptsmt.executeUpdate();
+
+            conn.commit();
+
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+
+    }
+
+    public void deleteSide (int id) {
+        String deleteSide = "DELETE FROM side where id = ?";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(deleteSide, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.executeUpdate();
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+    }
+
+    public void addPizzaOrder(int id, int orderID, int customerID, String foodItem, float price, String date) {
+        String pizzaTopping = "INSERT INTO pizzaToppings(id, orderID, customerID, foodItem, price, date) VALUES(?, ?, ?, ?, ?, ?)";
+
+        Connection conn = null;
+        PreparedStatement ptsmt = null;
+
+        try {
+            conn = this.connect();
+            if (conn == null) {
+                return;
+            }
+
+            conn.setAutoCommit(false);
+
+            ptsmt = conn.prepareStatement(pizzaTopping, Statement.RETURN_GENERATED_KEYS);
+            ptsmt.setInt(1, id);
+            ptsmt.setInt(2, orderID);
+            ptsmt.setInt(3, customerID);
+            ptsmt.setString(4, foodItem);
+            ptsmt.setFloat(5, price);
+            ptsmt.setString(6, date);
+
+            ptsmt.executeUpdate();
+
+            conn.commit();
+
+        } catch (SQLException e1) {
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException e2) {
+                System.out.println(e2.getMessage());
+            }
+            System.out.println(e1.getMessage());
+
+        } finally {
+            try {
+                if (ptsmt != null) {
+                    ptsmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e3) {
+                System.out.println(e3.getMessage());
+            }
+        }
+
+    }
+
 }
