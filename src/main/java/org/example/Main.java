@@ -10,9 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Main {
-    public static int a;
-    public static int b;
-
     public static void main(String[] args) throws IOException {
         int port = 5678;
         System.out.println("Server hosted on port: " + port);

@@ -220,13 +220,10 @@ class Menu_Submit implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /menu_submit request");
-        byte[] bytes = "<div>form submitted</div> <button hx-get='/form_html' hx-target='#form' hx-swap='outerHTML'>New form</button>".getBytes();
+        byte[] bytes = "<div>Menu Saved</div> <button hx-get='/order' hx-target='#main' hx-swap='innerHTML'>Edit Choices</button>".getBytes();
         byte[] query = exchange.getRequestBody().readAllBytes();
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
-        Connection connection = null;
-        SQLController sqlController = new SQLController();
-        sqlController.addTopping(1, query_map.get("lname"), 0.50F);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
         exchange.getResponseBody().write(bytes);
