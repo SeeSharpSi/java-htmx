@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URI;
@@ -191,7 +192,7 @@ class Test implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /test request");
-        String[] stuff = {"test1", "test2", "test3"};
+        String[] stuff = {"test1", "test2", "bob"};
         StringBuilder file = new StringBuilder();
         for (String s : stuff) {
             file.append(String.format("<div>Item: %s</div>", s));
