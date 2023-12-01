@@ -16,6 +16,7 @@ public class Main {
         System.out.println("By default, go to localhost:" + port + " in your browser");
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/", new Index("/"));
+        server.createContext("/test", new Test());
         server.createContext("/static", new Static());
         server.createContext("/home", new Home());
         server.createContext("/order", new Order());
