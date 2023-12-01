@@ -929,12 +929,14 @@ h3 {
 
 /*Test Receipts*/
 body {
+    margin-top: 50px;
     font-family: 'Arial', sans-serif;
     margin: 0px;
     padding: 0px;
   }
   
   .receipt {
+    margin-top: 50px;
       padding: 3mm;
       width: 80mm;
       border: 1px solid black;
