@@ -78,6 +78,19 @@ class Financial implements HttpHandler {
     }
 }
 
+class Inventory implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /inventory report request");
+        String file = Files.readString(Paths.get("src/main/html/Inventory_Report.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
 class Order implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {

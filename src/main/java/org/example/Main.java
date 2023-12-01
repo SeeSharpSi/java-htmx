@@ -32,6 +32,7 @@ public class Main {
         server.createContext("/form_html", new Form_Html());
         server.createContext("/receipt", new Receipt());
         server.createContext("/Financial_Report", new Financial());
+        server.createContext("/inventory", new Inventory());
         server.start();
 
         Connection connection = null;
