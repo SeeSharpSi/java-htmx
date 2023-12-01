@@ -39,10 +39,12 @@
                 <h2>Premade Pizzas</h2> <br>
                 <ul>
                     <li>
-                        <h3 class="dish-name">Hawian Pizza - $12.99 <br> <label for="hawaiian_piza">Crust
+                        <h3 class="dish-name">Hawian Pizza - $12.99 <br> <label for="hawaiian_pizza">Crust
                             Type</label>
-                            <select id="hawaiian_piza" name="hawaiian_piza">
-                                <option value="" selected disabled hidden>Choose here</option>
+                            <select id="hawaiian_pizza" name="hawaiian_pizza">
+                                <option value="" hx-put="/option?item=hawaiian_pizza" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                                    Choose here
+                                </option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
@@ -60,7 +62,9 @@
                         <h3 class="dish-name">Supreme - $15.99 <br> <label for="supreme_pizza">Crust
                             Type</label>
                             <select id="supreme_pizza" name="supreme_pizza">
-                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="" hx-put="/option?item=supreme_pizza" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                                    Choose here
+                                </option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
@@ -78,7 +82,9 @@
                         <h3 class="dish-name">Ultimate Pepperoni - $14.99 <br> <label for="ultimate_pepperoni">Crust
                             Type</label>
                             <select id="ultimate_pepperoni" name="ultimate_pepperoni">
-                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="" hx-put="/option?item=ultimate_pepperoni" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                                    Choose here
+                                </option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
@@ -102,6 +108,9 @@
                     <h3>Pick your 5 toppings</h3>
                     <label for="toppings_one">Topping 1</label>
                     <select id="toppings_one" name="toppings_one">
+                        <option value="" hx-put="/option?item=toppings_one" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                            Choose here
+                        </option>
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -122,6 +131,9 @@
                     </select>
                     <label for="toppings_two">Topping 2</label>
                     <select id="toppings_two" name="toppings_two">
+                        <option value="" hx-put="/option?item=toppings_two" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                            Choose here
+                        </option>
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -142,6 +154,9 @@
                     </select>
                     <label for="toppings_three">Topping 3</label>
                     <select id="toppings_three" name="toppings_three">
+                        <option value="" hx-put="/option?item=toppings_three" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                            Choose here
+                        </option>
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -163,6 +178,9 @@
 
                     <label for="toppings_four">Topping 4</label>
                     <select id="toppings_four" name="toppings_four">
+                        <option value="" hx-put="/option?item=toppings_four" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                            Choose here
+                        </option>
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -184,6 +202,9 @@
 
                     <label for="toppings_five">Topping 5</label>
                     <select id="toppings_five" name="toppings_five">
+                        <option value="" hx-put="/option?item=toppings_five" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                            Choose here
+                        </option>
                         <option value="none">None</option>
                         <option value="parmesan">Parmesan</option>
                         <option value="mozzarella">mozzarella</option>
@@ -207,7 +228,9 @@
                     <h3>Pick your crust type</h3>
                     <label for="CrustType">Crust Type</label>
                     <select id="CrustType" name="CrustType">
-                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value="" hx-put="/option?item=CrustType" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                            Choose here
+                        </option>
                         <option value="Thin Crust">Thin Crust</option>
                         <option value="Thick Crust">Thick Crust</option>
                         <option value="Stuffed Crust">Stuffed Crust</option>

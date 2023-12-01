@@ -12,6 +12,7 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -225,7 +226,7 @@ class Menu_Submit implements HttpHandler {
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
         Cart_Vals.CrustType = query_map.get("CrustType");
-        Cart_Vals.supreme_pizza = query_map.get("surpreme_pizza");
+        Cart_Vals.supreme_pizza = query_map.get("supreme_pizza");
         Cart_Vals.hawaiian_pizza = query_map.get("hawaiian_pizza");
         Cart_Vals.toppings_one = query_map.get("toppings_one");
         Cart_Vals.toppings_two = query_map.get("toppings_two");
@@ -237,6 +238,39 @@ class Menu_Submit implements HttpHandler {
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
         exchange.getResponseBody().write(bytes);
+        exchange.close();
+    }
+}
+
+class Option_Html implements HttpHandler {
+    public static Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
+        Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+        String[] pairs = query.split("&");
+        for (String pair : pairs) {
+            int idx = pair.indexOf("=");
+            query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"),
+                    URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
+        }
+        return query_pairs;
+    }
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /option request");
+        URI uri = exchange.getRequestURI();
+        String query = uri.getQuery();
+        System.out.println(query);
+        Map<String, String> query_map = splitQuery(new String(query.getBytes(), StandardCharsets.UTF_8));
+        System.out.println(query_map);
+        String s = query_map.get("item");
+        String s2 = Cart_Vals.forName(s);
+        if (s2.equals("")) {
+            s2 = "Choose here";
+        }
+        String file = String.format("<option value=\"\" selected disabled hidden>%s</option>", s2);
+        byte[] file_bytes = file.toString().getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
         exchange.close();
     }
 }

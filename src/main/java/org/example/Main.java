@@ -12,7 +12,6 @@ import java.sql.Statement;
 public class Main {
     public static void main(String[] args) throws IOException {
         int port = 5678;
-        System.out.println("bingus");
         System.out.println("Server hosted on port: " + port);
         System.out.println("By default, go to localhost:" + port + " in your browser");
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
@@ -21,6 +20,7 @@ public class Main {
         server.createContext("/menu_submit", new Menu_Submit());
         server.createContext("/static", new Static());
         server.createContext("/home", new Home());
+        server.createContext("/option", new Option_Html());
         server.createContext("/order", new Order());
         server.createContext("/other", new Other());
         server.createContext("/rewards", new Rewards());
