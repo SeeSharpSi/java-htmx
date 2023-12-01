@@ -192,7 +192,7 @@ class Test implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /test request");
-        String[] stuff = {"test1", "test2", "bob"};
+        String[] stuff = {"test1", "Jacob", "bob"};
         StringBuilder file = new StringBuilder();
         for (String s : stuff) {
             file.append(String.format("<div>Item: %s</div>", s));
@@ -224,6 +224,16 @@ class Menu_Submit implements HttpHandler {
         byte[] query = exchange.getRequestBody().readAllBytes();
         Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
         System.out.println(query_map);
+        Cart_Vals.CrustType = query_map.get("CrustType");
+        Cart_Vals.supreme_pizza = query_map.get("surpreme_pizza");
+        Cart_Vals.hawaiian_pizza = query_map.get("hawaiian_pizza");
+        Cart_Vals.toppings_one = query_map.get("toppings_one");
+        Cart_Vals.toppings_two = query_map.get("toppings_two");
+        Cart_Vals.toppings_three = query_map.get("toppings_three");
+        Cart_Vals.toppings_four = query_map.get("toppings_four");
+        Cart_Vals.toppings_five = query_map.get("toppings_five");
+        Cart_Vals.ultimate_pepperoni = query_map.get("ultimate_pepperoni");
+        System.out.println("CART: " + Cart_Vals.CrustType);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
         exchange.getResponseBody().write(bytes);
