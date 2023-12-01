@@ -104,6 +104,57 @@ function lightmode () {
     localStorage.setItem('mode', 'light');
 }
 
+function getSelectedToppings() {
+    const toppings = [];
+    for (let i = 1; i <= 5; i++) {
+        const topping = document.getElementById(`topping${i}`).value;
+        if (topping !== 'none') {
+            toppings.push(topping);
+        }
+    }
+    return toppings;
+}
+
+function addToCart(productName, price, toppings, crustType) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const newItem = { productName, price, toppings, crustType };
+    cartItems.push(newItem);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCartDisplay();
+    updateCartSummary();
+}
+
+function updateCartDisplay() {
+    const cart = document.getElementById('cart-items');
+    cart.innerHTML = '';
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.productName} - $${item.price.toFixed(2)}`;
+        cart.appendChild(li);
+    });
+}
+
+function updateCartSummary() {
+    const cartSummary = document.getElementById('cart-summary-items');
+    cartSummary.innerHTML = '';
+    const cartTotalElement = document.getElementById('cart-total');
+    let cartTotal = 0;
+
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.productName} - $${item.price.toFixed(2)}`;
+        cartSummary.appendChild(li);
+        cartTotal += item.price;
+    });
+
+    cartTotalElement.textContent = cartTotal.toFixed(2);
+}
+
+updateCartDisplay();
+updateCartSummary(); // Initial update when the page loads
+
 /*~~~~~~~~~~~~~~~ SCROLL REVEAL ANIMATION ~~~~~~~~~~~~~~~*/
 const sr = ScrollReveal({
     origin: 'top',

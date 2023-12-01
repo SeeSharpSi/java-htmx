@@ -42,9 +42,10 @@
                         <h3 class="dish-name">Hawian Pizza - $12.99 <br> <label for="hawaiian_pizza">Crust
                             Type</label>
                             <select id="hawaiian_pizza" name="hawaiian_pizza">
-                                <option value="" hx-put="/option?item=hawaiian_pizza" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                                <option selected disabled hidden value="" hx-put="/option?item=hawaiian_pizza" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
                                     Choose here
                                 </option>
+                                <option value="">None</option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
@@ -62,9 +63,10 @@
                         <h3 class="dish-name">Supreme - $15.99 <br> <label for="supreme_pizza">Crust
                             Type</label>
                             <select id="supreme_pizza" name="supreme_pizza">
-                                <option value="" hx-put="/option?item=supreme_pizza" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                                <option selected disabled hidden value="" hx-put="/option?item=supreme_pizza" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
                                     Choose here
                                 </option>
+                                <option value="">None</option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
@@ -82,9 +84,10 @@
                         <h3 class="dish-name">Ultimate Pepperoni - $14.99 <br> <label for="ultimate_pepperoni">Crust
                             Type</label>
                             <select id="ultimate_pepperoni" name="ultimate_pepperoni">
-                                <option value="" hx-put="/option?item=ultimate_pepperoni" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                                <option selected disabled hidden value="" hx-put="/option?item=ultimate_pepperoni" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
                                     Choose here
                                 </option>
+                                <option value="">None</option>
                                 <option value="Thin Crust">Thin Crust</option>
                                 <option value="Thick Crust">Thick Crust</option>
                                 <option value="Stuffed Crust">Stuffed Crust</option>
@@ -108,7 +111,7 @@
                     <h3>Pick your 5 toppings</h3>
                     <label for="toppings_one">Topping 1</label>
                     <select id="toppings_one" name="toppings_one">
-                        <option value="" hx-put="/option?item=toppings_one" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
+                        <option selected disabled hidden value="" hx-put="/option?item=toppings_one" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
                             Choose here
                         </option>
                         <option value="none">None</option>
@@ -231,12 +234,81 @@
                         <option value="" hx-put="/option?item=CrustType" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
                             Choose here
                         </option>
+                        <option value="">None</option>
                         <option value="Thin Crust">Thin Crust</option>
                         <option value="Thick Crust">Thick Crust</option>
                         <option value="Stuffed Crust">Stuffed Crust</option>
                     </select>
             </div>
+            <li>
+                <br><br><h3 class="dish-name">Water - Free <br> <label for="Water">Drink Size</label>
+                <select id="Water Size" name="Water Size">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="Extra Large">Extra Large</option>
+                </select></h3>
+
+                <br><span class="Description">Fresh Chilled Drink</span><br>
+                <img src="" alt="Drink" width="200 px" height="200 px">
+            </li>
+
+            <li>
+                <br><br><h3 class="dish-name">Soft Drink - $1.79 <br> <label for="Softy Drink">Drink Size</label>
+                <select id="Softy Drink Size" name="Softy Drink Size">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="Extra Large">Extra Large</option>
+                </select></h3>
+
+                <br><span class="Description">Fresh Chilled Drink</span><br>
+                <img src="" alt="Drink" width="200 px" height="200 px">
+            </li>
+            <li>
+                <br><br><h3 class="dish-name">Fruit Juice - $1.39 <br> <label for="Water">Drink Size</label>
+                <select id="Water Size" name="Water Size">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="Extra Large">Extra Large</option>
+                </select></h3>
+
+                <label for="Water">Type of Juice</label>
+                <select id="Tea Type" name="Tea Type">
+                    <option value="Orange">Orange</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Grape">Grape</option>
+                    <option value="Carrot ">Carrot </option>
+                    <option value="Beet">Beet</option>
+                </select></h3>
+
+                <br><span class="Description">Fresh Chilled Drink</span><br>
+                <img src="" alt="Drink" width="200 px" height="200 px">
+            </li>
+            <li>
+                <br><br><h3 class="dish-name">Tea - $2.49 <br> <label for="Water">Drink Size</label>
+                <select id="Tea Size" name="Tea Size">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="Extra Large">Extra Large</option>
+                </select></h3>
+
+                <label for="Water">Type of Tea</label>
+                <select id="Tea Type" name="Tea Type">
+                    <option value="Sweet">Sweet</option>
+                    <option value="UnSweet">UnSweet</option>
+                    <option value="Oolong">Oolong</option>
+                    <option value="Green Tea">Green Tea</option>
+                    <option value="Matcha">Matcha</option>
+                </select></h3>
+
+                <br><span class="Description">Fresh Tea</span><br>
+                <img src="" alt="Drink" width="200 px" height="200 px">
+            </li>
+            </ul>
         </nav>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Save" style="margin-top: 30px; width: 100px; height: 50px; background-color: green; border: 2px solid #66FF99; border-radius: 10px;">
     </form>
 </center>
