@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Financial Report</title>
+
+    <style>
+      body {
+        font-family: "Ariel", sans-serif;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 100px;
+      }
+      table,
+      form {
+        width: 500px;
+        margin: 20px auto;
+      }
+      table {
+        border-collapse: collapse;
+        text-align: center;
+      }
+      table td,
+      table th {
+        border: solid 1px black;
+      }
+      label,
+      input {
+        display: block;
+        margin: 10px 0;
+        font-size: 20px;
+      }
+      button {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <h1>Daily Financial Report</h1>
+    <!--<form>
+      <div class="input-row">
+        <label for="orderNum">Order Number</label>
+        <input type="text" name="orderNum" id="orderNum" />
+      </div>
+      <div class="input-row">
+        <label for="salePrice">Sale Price</label>
+        <input type="text" name="salePrice" id="salePrice" />
+      </div>
+      <div class="input-row">
+        <label for="cost">Cost</label>
+        <input type="text" name="cost" id="cost" />
+      </div>
+      <div class="input-row">
+        <label for="profit">Profit</label>
+        <input type="text" name="profit" id="profit" />
+      </div>
+      <button>Submit</button>
+    </form>-->
+    <table>
+      <thead>
+        <tr>
+          <th>Order Number</th>
+          <th>Sale Price</th>
+          <th>Cost</th>
+          <th>Profit</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        
+      </tbody>
+        <tr>
+        <th>-</th>
+        <th>-</th>
+        <th>-</th>
+        <th>-</th>
+        </tr>
+        <tr>
+          <tr>
+            <th>-</th>
+            <th>-</th>
+            <th>-</th>
+            <th>-</th>
+            </tr>
+            <tr>
+        <th></th>
+        <th>Total Sales</th>
+        <th>Total Cost</th>
+        <th>Total Profit</th>
+        </tr>
+        <tr>
+            <th>-</th>
+            <th><!--Enter total sales--></th>
+            <th><!--Enter total cost--></th>
+            <th><!--Enter total profit--></th>
+        </tr>
+    </table>
+    <script>
+      const formEl = document.querySelector("form");
+      const tbodyEl = document.querySelector("tbody");
+      const tableEl = document.querySelector("table");
+      function onAddEntry(e) {
+        e.preventDefault();
+        const salePrice = document.getElementById("salePrice").value;
+        const orderNum = document.getElementById("orderNum").value;
+        const cost = document.getElementById("cost").value;
+        const profit = document.getElementById("profit").value;
+        
+        tbodyEl.innerHTML += `
+            <tr>
+                <td>${orderNum}</td>
+                <td>${salePrice}</td>
+                <td>${cost}</td>
+                <td>${profit}</td>
+            </tr>`;
+      }
+
+      formEl.addEventListener("submit", onAddEntry);
+    </script>
+  </body>
+</html>

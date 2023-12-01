@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Receipt</title>
+    <link rel="stylesheet" href="/src/main/static/styles.css">
+    <margin-top: 50px;></margin-top:>
+</head>
+<body>
+  <div class="receipt">
+  <div class="headerTitle">
+    Git Pizza
+  </div>
+  <hr>
+  <div class="headerSubTitle">
+    1100 South Marietta Pkwy SE, Marietta, GA 30060
+  </div>
+  <div id="phone">
+    Tel: 470-578-6000
+  </div>
+
+  <hr>
+  <div class="orderNo">
+    Order# <span id="Order #"></span>
+    <script>
+    function getRandom(){}
+    </script>
+  </div>
+  <div id="date">
+    <d>Date of Purchase:</d>
+    <span id="datetime"></span>
+    <script>
+      function updateDateTime() {}
+    </script>
+  </div>
+  <hr>
+
+  <!-- Items Purchased -->
+  <div class="items">
+    <div class="item">
+      <div class="itemRow">
+        <div class="itemName">Custom Pizza</div>
+          <!--<span id="itemName"></span>
+          <script>
+          function getRandomPizza(){}
+          </script></div>-->
+        <div class="itemSize">Large</div>
+        <!--<span id="itemSize"></span>-->
+        <div class="itemPrice">$20.00</div>
+        <!--<span id="itemPrice"></span>-->
+      </div>
+      <div class="itemRow">
+        <div class="itemCustomization"></div>
+        <div class="crustType">Stuffed Crust</div>
+          <!--<span id="topping"></span>
+          <script>
+            function getRandomPrice(){}
+            </script>-->
+        <div class="itemPrice">$4.00</div>
+        <!--<span id="itemPrice"></span>
+        <script>
+          function getRandomPrice(){}
+          </script>-->
+      </div>
+      <div class="itemRow">
+        <div class="itemCustomization"></div>
+        <div class="topping">Black Olives</div>
+        <div class="itemPrice">$2.00</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="itemRow">
+        <div class="itemName">Supreme Pizza</div>
+        <div class="itemSize">Medium</div>
+        <div class="itemPrice">$24.00</div>
+      </div>
+      <div class="itemRow">
+        <div class="itemCustomization"></div>
+        <div class="crustType">Thin Crust</div>
+        <div class="itemPrice">$0.00</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="itemRow">
+        <div class="itemName">Garlic Knots</div>
+        <div class="itemSize"></div>
+        <div class="itemPrice">$12.00</div>
+      </div>
+  </div>
+
+  <!-- Totals -->
+  <hr>
+<div class="flex">
+    <div class="totals">
+      <div class="section">
+        <div class="row">
+          <div class="col1">Subtotal</div>
+          <div class="col2">$62.00</div>
+          <div class="col3"></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="row">
+          <div class="col1">Sales-Tax:</div>
+          <div class="col2">$4.34</div>
+          <div class="col3"></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="row">
+          <div class="col1">Delivery Fee:</div>
+          <div class="col2">$5.00</div>
+          <div class="col3"></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="row">
+          <div class="col1">Total:</div>
+          <div class="col2">$71.34</div>
+          <div class="col3"></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="row">
+          <div class="col1">Tip Amount:</div>
+          <div class="col2">__________</div>
+          <div class="col3"></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="row">
+          <div class="col1">New Total:</div>
+          <div class="col2">__________</div>
+          <div class="col3"></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="row">
+            <div class="col1">X__________________________________</div>
+            <div class="col2"></div>
+            <div class="col3"></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="row">
+            <div class="col1">I AGREE TO PAY THE ABOVE TOTAL AMOUNT ACCORDING TO THE CARD ISSUER AGREEMENT</div>
+            <div class="col2"></div>
+            <div class="col3"></div>
+          </div>
+          <div class="row">
+            <div class="col1"></div>
+            <div class="col2"></div>
+            <div class="col3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer">
+      <div class="ty">Thank You!</div>
+    </div>
+  </div>
+  <script src="/src/main/static/receipt.js"></script>
+  </body>
+  </html>

@@ -9,7 +9,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+//Test Commit for Git
 public class Main {
+    public static int a;
+    public static int b;
+
     public static void main(String[] args) throws IOException {
         int port = 5678;
         System.out.println("Server hosted on port: " + port);
@@ -27,6 +31,9 @@ public class Main {
         server.createContext("/cart", new Cart());
         server.createContext("/form", new Form());
         server.createContext("/form_html", new Form_Html());
+        server.createContext("/receipt", new Receipt());
+        server.createContext("/financial", new Financial());
+        server.createContext("/inventory", new Inventory());
         server.start();
 
         Connection connection = null;
