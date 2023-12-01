@@ -53,6 +53,31 @@ class Home implements HttpHandler {
     }
 }
 
+class Receipt implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /receipt request");
+        String file = Files.readString(Paths.get("src/main/html/receipt.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+class Financial implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /financial report request");
+        String file = Files.readString(Paths.get("src/main/html/Financial_Report.html"));
+        byte[] file_bytes = file.getBytes();
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
 class Order implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -192,7 +217,7 @@ class Test implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         System.out.println("got /test request");
-        String[] stuff = {"test1", "test2", "bob"};
+        String[] stuff = {"test1", "Jacob", "bob"};
         StringBuilder file = new StringBuilder();
         for (String s : stuff) {
             file.append(String.format("<div>Item: %s</div>", s));
@@ -201,6 +226,42 @@ class Test implements HttpHandler {
         exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, file_bytes.length);
         exchange.getResponseHeaders().add("Content-Type", "text/html");
         exchange.getResponseBody().write(file_bytes);
+        exchange.close();
+    }
+}
+
+class Menu_Submit implements HttpHandler {
+    public static Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
+        Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+        String[] pairs = query.split("&");
+        for (String pair : pairs) {
+            int idx = pair.indexOf("=");
+            query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"),
+                    URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
+        }
+        return query_pairs;
+    }
+
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        System.out.println("got /menu_submit request");
+        byte[] bytes = "<div>Menu Saved</div> <button hx-get='/order' hx-target='#main' hx-swap='innerHTML'>Edit Choices</button>".getBytes();
+        byte[] query = exchange.getRequestBody().readAllBytes();
+        Map<String, String> query_map = splitQuery(new String(query, StandardCharsets.UTF_8));
+        System.out.println(query_map);
+        Cart_Vals.CrustType = query_map.get("CrustType");
+        Cart_Vals.supreme_pizza = query_map.get("surpreme_pizza");
+        Cart_Vals.hawaiian_pizza = query_map.get("hawaiian_pizza");
+        Cart_Vals.toppings_one = query_map.get("toppings_one");
+        Cart_Vals.toppings_two = query_map.get("toppings_two");
+        Cart_Vals.toppings_three = query_map.get("toppings_three");
+        Cart_Vals.toppings_four = query_map.get("toppings_four");
+        Cart_Vals.toppings_five = query_map.get("toppings_five");
+        Cart_Vals.ultimate_pepperoni = query_map.get("ultimate_pepperoni");
+        System.out.println("CART: " + Cart_Vals.CrustType);
+        exchange.getResponseHeaders().add("Content-Type", "text/html");
+        exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, bytes.length);
+        exchange.getResponseBody().write(bytes);
         exchange.close();
     }
 }
