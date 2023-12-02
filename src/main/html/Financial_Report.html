@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <margin-top: 50px;></margin-top:>
     <title>Daily Financial Report</title>
 
     <style>
@@ -15,7 +16,7 @@
       }
       table,
       form {
-        width: 500px;
+        width: 100%;
         margin: 20px auto;
       }
       table {
@@ -38,65 +39,54 @@
     </style>
   </head>
   <body>
-    
-    <h1>Daily Financial Report</h1>
-    <!--<form>
+  </br>
+</br>
+</br>
+<center>
+    <h1>Create Account</h1>
+    <form>
       <div class="input-row">
-        <label for="orderNum">Order Number</label>
-        <input type="text" name="orderNum" id="orderNum" />
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" />
       </div>
       <div class="input-row">
-        <label for="salePrice">Sale Price</label>
-        <input type="text" name="salePrice" id="salePrice" />
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" />
       </div>
       <div class="input-row">
-        <label for="cost">Cost</label>
-        <input type="text" name="cost" id="cost" />
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" />
       </div>
       <div class="input-row">
-        <label for="profit">Profit</label>
-        <input type="text" name="profit" id="profit" />
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" />
+      </div>
+      <div class="input-row">
+        <label for="email">Email Address</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="input-row">
+        <label for="del">Delivery Address</label>
+        <input type="text" name="del" id="del" />
       </div>
       <button>Submit</button>
-    </form>-->
+    </form>
     <table>
       <thead>
         <tr>
-          <th>Order Number</th>
-          <th>Sale Price</th>
-          <th>Cost</th>
-          <th>Profit</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Email Address</th>
+          <th>Delivery Address</th>
         </tr>
       </thead>
       <tbody>
 
         
       </tbody>
-        <tr>
-        <th>-</th>
-        <th>-</th>
-        <th>-</th>
-        <th>-</th>
-        </tr>
-        <tr>
-          <tr>
-            <th>-</th>
-            <th>-</th>
-            <th>-</th>
-            <th>-</th>
-            </tr>
-            <tr>
-        <th></th>
-        <th>Total Sales</th>
-        <th>Total Cost</th>
-        <th>Total Profit</th>
-        </tr>
-        <tr>
-            <th>-</th>
-            <th><!--Enter total sales--></th>
-            <th><!--Enter total cost--></th>
-            <th><!--Enter total profit--></th>
-        </tr>
+
     </table>
     <script>
       const formEl = document.querySelector("form");
@@ -104,21 +94,26 @@
       const tableEl = document.querySelector("table");
       function onAddEntry(e) {
         e.preventDefault();
-        const salePrice = document.getElementById("salePrice").value;
-        const orderNum = document.getElementById("orderNum").value;
-        const cost = document.getElementById("cost").value;
-        const profit = document.getElementById("profit").value;
+        const lastName = document.getElementById("lastName").value;
+        const firstName = document.getElementById("firstName").value;
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const email = document.getElementById("email").value;
+        const del = document.getElementById("del").value;
         
         tbodyEl.innerHTML += `
             <tr>
-                <td>${orderNum}</td>
-                <td>${salePrice}</td>
-                <td>${cost}</td>
-                <td>${profit}</td>
+                <td>${firstName}</td>
+                <td>${lastName}</td>
+                <td>${username}</td>
+                <td>${password}</td>
+                <td>${email}</td>
+                <td>${del}</td>
             </tr>`;
       }
 
       formEl.addEventListener("submit", onAddEntry);
     </script>
+    </center>
   </body>
 </html>
